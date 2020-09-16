@@ -27,7 +27,7 @@ namespace InventorySystem.DataAccess.Repository
                 warehouseDb.Description = warehouse.Description;
                 warehouseDb.Status = warehouse.Status;
 
-                _db.SaveChanges();
+
             }    
         }
     }
