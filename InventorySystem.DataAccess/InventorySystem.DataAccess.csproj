@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Migrations\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\InventorySystem.Models\InventorySystem.Models.csproj" />
     <ProjectReference Include="..\InventorySystem.Utilities\InventorySystem.Utilities.csproj" />
   </ItemGroup>
