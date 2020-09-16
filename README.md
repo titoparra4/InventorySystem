@@ -1,2 +1,2 @@
-# InventorySystem
+# Inventory System
 Inventory System
