@@ -7,6 +7,7 @@ namespace InventorySystem.DataAccess.Repository.IRepository
     public interface IWorkUnit : IDisposable
     {
         IWarehouseRepository Warehouse { get; }
+        ICategoryRepository Category { get; }
 
         void Save();
     }

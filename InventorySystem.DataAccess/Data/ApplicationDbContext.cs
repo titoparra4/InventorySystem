@@ -15,5 +15,7 @@ namespace InventorySystem.DataAccess.Data
         }
 
         public DbSet<Warehouse> Warehouses { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
     }
 }
