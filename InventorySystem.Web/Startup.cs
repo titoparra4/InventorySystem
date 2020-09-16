@@ -12,7 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using InventorySystem.DataAccess.Data;
-
+using InventorySystem.DataAccess.Repository.IRepository;
+using InventorySystem.DataAccess.Repository;
 
 namespace InventorySystem.Web
 {
@@ -33,6 +34,8 @@ namespace InventorySystem.Web
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddScoped<IWorkUnit, WorkUnit>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();
         }
