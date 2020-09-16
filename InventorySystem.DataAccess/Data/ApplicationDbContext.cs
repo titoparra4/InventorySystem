@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace InventorySystem.Web.Data
+namespace InventorySystem.DataAccess.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

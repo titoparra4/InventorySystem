@@ -5,10 +5,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using InventorySystem.Web.Models;
+using InventorySystem.Models.ViewModels;
 
-namespace InventorySystem.Web.Controllers
+namespace InventorySystem.Web.Areas.Inventario.Controllers
 {
+    [Area("Inventory")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
