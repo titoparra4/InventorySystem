@@ -11,6 +11,8 @@ namespace InventorySystem.DataAccess.Repository.IRepository
         IBrandRepository Brand { get; }
         IProductRepository Product { get; }
 
+        IUserApplicationRepository UserApplication { get; }
+
         void Save();
     }
 }

@@ -14,6 +14,8 @@ namespace InventorySystem.DataAccess.Repository
         public IBrandRepository Brand { get; private set; }
         public IProductRepository Product { get; private set; }
 
+        public IUserApplicationRepository UserApplication { get; private set; }
+
         public WorkUnit(ApplicationDbContext db)
         {
             _db = db;
@@ -21,6 +23,7 @@ namespace InventorySystem.DataAccess.Repository
             Category = new CategoryRepository(_db);
             Brand = new BrandRepository(_db);
             Product = new ProductRepository(_db);
+            UserApplication = new UserApplicationRepository(_db);
         }
 
         public void Save()

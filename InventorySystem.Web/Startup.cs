@@ -14,6 +14,8 @@ using Microsoft.Extensions.Hosting;
 using InventorySystem.DataAccess.Data;
 using InventorySystem.DataAccess.Repository.IRepository;
 using InventorySystem.DataAccess.Repository;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using InventorySystem.Utilities;
 
 namespace InventorySystem.Web
 {
@@ -32,9 +34,10 @@ namespace InventorySystem.Web
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddSingleton<IEmailSender, EmailSender>();
             services.AddScoped<IWorkUnit, WorkUnit>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();
