@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using InventorySystem.Models.ViewModels;
+using InventorySystem.DataAccess.Repository.IRepository;
+using InventorySystem.Models;
 
 namespace InventorySystem.Web.Areas.Inventario.Controllers
 {
@@ -13,15 +15,18 @@ namespace InventorySystem.Web.Areas.Inventario.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IWorkUnit _workUnit;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IWorkUnit workUnit)
         {
             _logger = logger;
+            _workUnit = workUnit;
         }
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Product> productList = _workUnit.Product.GetAll(IncludeProperties: "Category,Brand");
+            return View(productList);
         }
 
         public IActionResult Privacy()
