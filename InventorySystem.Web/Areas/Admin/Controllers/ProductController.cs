@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using InventorySystem.DataAccess.Repository.IRepository;
 using InventorySystem.Models;
 using InventorySystem.Models.ViewModels;
+using InventorySystem.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,6 +15,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace InventorySystem.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = DS.Role_Admin+","+DS.Role_Inventary)]
     public class ProductController : Controller
     {
         private readonly IWorkUnit _workUnit;
