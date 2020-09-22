@@ -171,11 +171,31 @@ namespace InventorySystem.Web.Areas.Inventory.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult Record()
+        {
+            return View();
+        }
+
+        public IActionResult HistoryDetail(int id)
+        {
+            var detailHistory = _db.InventoryDetails.Include(p => p.Product).Include(b => b.Product.Brand).Where(d => d.InventoryId == id);
+            return View(detailHistory);
+        }
+
         [HttpGet]
         public IActionResult GetAll()
         {
             var all = _db.WarehouseProducts.Include(w => w.Warehouse).Include(p => p.Product).ToList();
             return Json(new { data = all });
         }
+
+        [HttpGet]
+        public IActionResult GetRecord()
+        {
+            var all = _db.Inventories.Include(w => w.Warehouse).Include(u => u.UserApplication).Where(i => i.Status == true).ToList();
+            return Json(new { data = all });
+        }
+
+
     }
 }
