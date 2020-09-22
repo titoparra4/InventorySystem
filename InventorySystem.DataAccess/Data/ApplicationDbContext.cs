@@ -23,5 +23,11 @@ namespace InventorySystem.DataAccess.Data
         public DbSet<Product> Products { get; set; }
 
         public DbSet<UserApplication> UserApplications { get; set; }
+
+        public DbSet<WarehouseProduct> WarehouseProducts { get; set; }
+
+        public DbSet<Inventory> Inventories { get; set; }
+
+        public DbSet<InventoryDetail> InventoryDetails { get; set; }
     }
 }
