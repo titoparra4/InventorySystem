@@ -15,6 +15,9 @@
                             <p>Precio: <b> $ @product.Price.ToString("0.00")</b></p>
                         </div>
                     </div>
+                    <div>
+                        <a asp-action="Detail" class="btn btn-primary form-control" asp-route-id="@product.Id">Detail</a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -10,5 +10,6 @@ namespace InventorySystem.Utilities
         public const string Role_Admin = "Admin";
         public const string Role_Inventary = "Inventary";
         public const string Role_Sales = "Sales";
+        public const string ssShoppingCart = "Sesion Shopping Cart";
     }
 }
