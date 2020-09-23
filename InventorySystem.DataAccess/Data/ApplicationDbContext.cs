@@ -29,5 +29,7 @@ namespace InventorySystem.DataAccess.Data
         public DbSet<Inventory> Inventories { get; set; }
 
         public DbSet<InventoryDetail> InventoryDetails { get; set; }
+
+        public DbSet<Company> Companies { get; set; }
     }
 }

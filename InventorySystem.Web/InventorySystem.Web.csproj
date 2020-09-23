@@ -27,4 +27,8 @@
     <ProjectReference Include="..\InventorySystem.Utilities\InventorySystem.Utilities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\company\" />
+  </ItemGroup>
+
 </Project>
