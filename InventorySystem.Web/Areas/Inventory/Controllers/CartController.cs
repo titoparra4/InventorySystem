@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Rotativa.AspNetCore;
 using Stripe;
 
 namespace InventorySystem.Web.Areas.Inventory.Controllers
@@ -206,6 +207,22 @@ namespace InventorySystem.Web.Areas.Inventory.Controllers
         public IActionResult OrderConfirmation(int id)
         {
             return View(id); 
+        }
+
+        public IActionResult PrintOrder(int id)
+        {
+            ShoppingCartViewModel = new ShoppingCartViewModel();
+            ShoppingCartViewModel.Company = _workUnit.Company.GetFirts();
+            ShoppingCartViewModel.Order = _workUnit.Order.GetFirts(o => o.Id == id, IncludeProperties: "UserApplication");
+            ShoppingCartViewModel.OrderDetailsList = _workUnit.OrderDetail.GetAll(d => d.OrderId == id, IncludeProperties: "Product");
+
+            return new ViewAsPdf("PrintOrder", ShoppingCartViewModel)
+            {
+                FileName = "Order#" + ShoppingCartViewModel.Order.Id + ".pdf",
+                PageOrientation = Rotativa.AspNetCore.Options.Orientation.Portrait,
+                PageSize = Rotativa.AspNetCore.Options.Size.A4,
+                CustomSwitches = "--page-offset 0 --footer-center [page] --footer-font-size 12"
+            };
         }
     }
 }

@@ -10,6 +10,13 @@
         We have received your Order and We will send you an email soon!
         <br />
         Your Order Number is : @Model
+
+        <div class="text-center">
+            <a asp-area="Inventory" asp-controller="Home" asp-action="Index" class="btn btn-success">Exit</a>
+            <a asp-action="PrintOrder" class="btn btn-warning" asp-route-id="@Model" target="_blank">
+                <i class="fas fa-print"></i> Print 
+            </a>
+        </div>
     </div>
 </div>
 

@@ -1,0 +1,116 @@
+﻿@model InventorySystem.Models.ViewModels.ShoppingCartViewModel
+@{
+    ViewData["Title"] = "PrintOrder";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="@Model.Company.LogoUrl" class="rounded" width="250" height="200" />
+        </div>
+        <div class="col-sm-4">
+            <label class="col-form-label" style="font-size:20px;">@Model.Company.Name</label>
+        </div>
+    </div>
+    <div class="form-group row">
+
+        <div class="col-2">
+            <label class="col-form-label" style="font-weight:bold; font-size:40px;">
+                Order#
+            </label>
+        </div>
+        <div class="col-2" style="border: none;">
+            <label class="col-form-label" style="font-weight:bold; font-size:40px;">@Model.Order.Id</label>
+        </div>
+    </div>
+    <div class="form-group row">
+
+        <div class="col-2">
+            <label class="col-form-label" style="font-weight:bold; font-size:20px;">
+                Company:
+            </label>
+        </div>
+        <div class="col-4" style="border: none;">
+            <label class="col-form-label" style="font-size:20px;">@Model.Company.Name</label>
+        </div>
+        <div class="col-6" style="border: none;">
+            <label class="col-form-label" style="font-size:20px;">@Model.Company.Address , @Model.Company.City , @Model.Company.Country</label>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label class="col-form-label" style="font-weight: bold; font-size:20px;">Cliente:</label>
+        </div>
+        <div class="col-6">
+            <label class="col-form-label" style="font-size:20px;">@Model.Order.NameClient</label>
+        </div>
+
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label class="col-form-label" style="font-weight: bold; font-size:20px;">Fecha Orden:</label>
+        </div>
+        <div class="col-6">
+            <label class="col-form-label" style="font-size:20px;">@Model.Order.OrderDate</label>
+        </div>
+    </div>
+
+    <div>
+        <table class="table table-striped border" style="height:10px;">
+            <thead class="thead-dark">
+                <tr class="table-secondary thead-dark">
+                    <th style="font-weight: bold; font-size:20px;">
+                        Product
+                    </th>
+                    <th style="text-align:right; font-weight: bold; font-size:20px;">
+                        Price
+                    </th>
+                    <th style="text-align:right; font-weight: bold; font-size:20px;">
+                        Quantity
+                    </th>
+                </tr>
+            <thead>
+            <tbody style="height:10px;">
+                @foreach (var item in Model.OrderDetailsList)
+                {
+                    <tr>
+                        <td style="font-size:20px;">
+                            @Html.DisplayFor(m => item.Product.Description)
+                        </td>
+
+                        <td style="text-align:right;font-size:20px;">
+                            @Html.DisplayFor(m => item.Price)
+                        </td>
+                        <td style="text-align:right;font-size:20px;">
+                            @Html.DisplayFor(m => item.Quantity)
+                        </td>
+                    </tr>
+
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <div class="form-group row">
+        <div class="col-8">
+
+        </div>
+        <div class="col-2">
+            <label class="col-form-label" style="font-weight: bold;font-size:20px;">Total Order:</label>
+        </div>
+        <div class="col-2" style="text-align:right; font-size:20px;">
+            <label class="col-form-label">$@(Model.Order.OrderTotal)</label>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
