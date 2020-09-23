@@ -9,6 +9,8 @@ namespace InventorySystem.Models.ViewModels
         public Company Company { get; set; }
         public  WarehouseProduct WarehouseProduct { get; set; }
         public ShoppingCart ShoppingCart { get; set; }
+        public IEnumerable<ShoppingCart> ShoppingCartsList { get; set; }
+        public Order Order { get; set; }
 
 
     }
