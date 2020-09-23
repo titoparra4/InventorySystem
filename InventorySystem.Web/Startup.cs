@@ -16,6 +16,7 @@ using InventorySystem.DataAccess.Repository.IRepository;
 using InventorySystem.DataAccess.Repository;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using InventorySystem.Utilities;
+using Stripe;
 
 namespace InventorySystem.Web
 {
@@ -38,6 +39,7 @@ namespace InventorySystem.Web
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddSingleton<IEmailSender, EmailSender>();
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
             services.AddScoped<IWorkUnit, WorkUnit>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();
@@ -78,6 +80,8 @@ namespace InventorySystem.Web
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
 
             app.UseEndpoints(endpoints =>
             {
