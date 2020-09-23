@@ -16,6 +16,12 @@ namespace InventorySystem.DataAccess.Repository
         public IUserApplicationRepository UserApplication { get; private set; }
         public ICompanyRepository Company { get; private set; }
 
+        public IShoppingCartRepository ShoppingCart { get; private set; }
+
+        public IOrderRepository Order { get; private set; }
+
+        public IOrderDetailRepository OrderDetail { get; private set; }
+
         public WorkUnit(ApplicationDbContext db)
         {
             _db = db;
@@ -25,6 +31,9 @@ namespace InventorySystem.DataAccess.Repository
             Product = new ProductRepository(_db);
             UserApplication = new UserApplicationRepository(_db);
             Company = new CompanyRepository(_db);
+            ShoppingCart = new ShoppingCartRepository(_db);
+            Order = new OrderRepository(_db);
+            OrderDetail = new OrderDetailRepository(_db);
         }
 
         public void Save()

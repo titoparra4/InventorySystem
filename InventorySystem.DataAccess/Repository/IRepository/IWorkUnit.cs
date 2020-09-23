@@ -12,6 +12,9 @@ namespace InventorySystem.DataAccess.Repository.IRepository
         IProductRepository Product { get; }
         IUserApplicationRepository UserApplication { get; }
         ICompanyRepository Company { get; }
+        IShoppingCartRepository ShoppingCart { get; }
+        IOrderRepository Order { get; }
+        IOrderDetailRepository OrderDetail { get; }
 
         void Save();
     }
