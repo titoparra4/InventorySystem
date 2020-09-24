@@ -80,25 +80,29 @@
                             </li>
                         }
 
-                        @if(HttpContextAccessor.HttpContext.Session.GetInt32(DS.ssShoppingCart)!=null)
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Admin" asp-controller="Order" asp-action="Index">Orders</a>
+                        </li>
+
+                        @if (HttpContextAccessor.HttpContext.Session.GetInt32(DS.ssShoppingCart) != null)
                         {
                             <li style="color:white;">
                                 <a asp-area="Inventory" asp-controller="Cart" asp-action="Index" class="nav-link">
-                                    @{ 
+                                    @{
                                         var productQuantity = HttpContextAccessor.HttpContext.Session.GetInt32(DS.ssShoppingCart);
                                     }
                                     <i class="fas fa-shopping-cart"></i> &nbsp; (@productQuantity)
                                 </a>
                             </li>
-                                        }
-                                        else
-                                        {
-                                            <li>
-                                                <a href="#" class="nav-link">
-                                                    <i class="fas fa-shopping-cart"></i>  &nbsp; (0)
-                                                </a>
-                                            </li>
-                                        }
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-shopping-cart"></i>  &nbsp; (0)
+                                </a>
+                            </li>
+                        }
 
 
                     </ul>

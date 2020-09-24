@@ -17,6 +17,7 @@ using InventorySystem.DataAccess.Repository;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using InventorySystem.Utilities;
 using Stripe;
+using InventorySystem.DataAccess.Initializer;
 
 namespace InventorySystem.Web
 {
@@ -41,6 +42,7 @@ namespace InventorySystem.Web
             services.AddSingleton<IEmailSender, EmailSender>();
             services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
             services.AddScoped<IWorkUnit, WorkUnit>();
+            services.AddScoped<IDbInitializer, DbInitializer>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();
 
@@ -59,7 +61,7 @@ namespace InventorySystem.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInitializer)
         {
             if (env.IsDevelopment())
             {
@@ -80,6 +82,8 @@ namespace InventorySystem.Web
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            dbInitializer.Initialize();
 
             StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
 
